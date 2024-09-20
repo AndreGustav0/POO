@@ -26,7 +26,6 @@ public class Main {
 
             int opcao = scanner.nextInt();
             scanner.nextLine(); // Consumir a nova linha
-
             OrdemServico ordemServico; // Declaração da variável
 
             switch (opcao) {
@@ -53,23 +52,22 @@ public class Main {
                     ordensServico.add(ordemServico);
                     System.out.println("Ordem de Serviço criada para Console.");
                     break;
-
                 case 4:
-                    System.out.print("Digite o índice da Ordem de Serviço para diagnosticar (0 a " + (ordensServico.size() - 1) + "): ");
+                    System.out.print("Digite o índice da Ordem de Serviço para diagnosticar (1 a " + (ordensServico.size()) + "): ");
                     int indexDiagnostico = scanner.nextInt();
-                    if (indexDiagnostico >= 0 && indexDiagnostico < ordensServico.size()) {
-                        ordensServico.get(indexDiagnostico).diagnosticar();
-                        System.out.println("Diagnóstico realizado. Custo: " + ordensServico.get(indexDiagnostico).getCusto());
+                    if (indexDiagnostico >= 1 && indexDiagnostico <= ordensServico.size()) { // Corrigido para >= 1
+                        ordensServico.get(indexDiagnostico - 1).diagnosticar(); // Subtrai 1 para acessar o índice correto
+                        System.out.println("Diagnóstico realizado. Custo: " + ordensServico.get(indexDiagnostico - 1).getCusto());
                     } else {
                         System.out.println("Índice inválido.");
                     }
                     break;
 
                 case 5:
-                    System.out.print("Digite o índice da Ordem de Serviço para aprovar (0 a " + (ordensServico.size() - 1) + "): ");
+                    System.out.print("Digite o índice da Ordem de Serviço para aprovar (1 a " + (ordensServico.size()) + "): ");
                     int indexAprovacao = scanner.nextInt();
-                    if (indexAprovacao >= 0 && indexAprovacao < ordensServico.size()) {
-                        ordensServico.get(indexAprovacao).aprovarOrcamento();
+                    if (indexAprovacao >= 1 && indexAprovacao <= ordensServico.size()) { // Corrigido para >= 1
+                        ordensServico.get(indexAprovacao - 1).aprovarOrcamento(); // Subtrai 1 para acessar o índice correto
                         System.out.println("Orçamento aprovado.");
                     } else {
                         System.out.println("Índice inválido.");
@@ -77,10 +75,10 @@ public class Main {
                     break;
 
                 case 6:
-                    System.out.print("Digite o índice da Ordem de Serviço para verificar status (0 a " + (ordensServico.size() - 1) + "): ");
+                    System.out.print("Digite o índice da Ordem de Serviço para verificar status (1 a " + (ordensServico.size()) + "): ");
                     int indexStatus = scanner.nextInt();
-                    if (indexStatus >= 0 && indexStatus < ordensServico.size()) {
-                        System.out.println("Status: " + ordensServico.get(indexStatus).getStatus());
+                    if (indexStatus >= 1 && indexStatus <= ordensServico.size()) { // Corrigido para >= 1
+                        System.out.println("Status: " + ordensServico.get(indexStatus - 1).getStatus()); // Subtrai 1 para acessar o índice correto
                     } else {
                         System.out.println("Índice inválido.");
                     }
